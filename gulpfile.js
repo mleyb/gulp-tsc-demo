@@ -1,11 +1,12 @@
-var gulp = require('gulp');
-var typescript = require('gulp-tsc');
-var less = require('gulp-less');
-var rename = require('gulp-rename');
-var minifyCSS = require('gulp-minify-css');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var concatCss = require('gulp-concat-css');
+var gulp = require('gulp'),
+    typescript = require('gulp-tsc'),
+    less = require('gulp-less'),
+    rename = require('gulp-rename'),
+    minifyCSS = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
+    concatCss = require('gulp-concat-css'),
+    notify = require('gulp-notify');
   
 gulp.task('styles', function() {
   return gulp.src('styles/*.less')
@@ -15,7 +16,8 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('build/styles'))
     .pipe(minifyCSS())
     .pipe(rename('styles.min.css'))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/'))
+    .pipe(notify({ message: "Styles task complete." }))
 });
  
 gulp.task('typescript', function(){
